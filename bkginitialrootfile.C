@@ -12,13 +12,12 @@
   cout<<"correctedEmax = "<<correctedEmax<<endl;
 
   //Defining the files
-  const char * root_file="ROOT_FILES/initial.root"; //for storing the histogram in root
-  const char * inputdatafile="DATA/bkg_001.dat";
+  const char * root_file="ROOTFILES/bkg2initial.root"; //for storing the histogram in root
+  const char * inputdatafile="DATA/bkg_002.dat";
   
   TCanvas *c = new TCanvas("c","Histogram",500,700);
   TFile *file=new TFile(root_file,"RECREATE"); //Root file to store the histograms
   TH1F *histo=new TH1F("histo","#font[22]{Calibrated Energy Spectrum}",numberOfChannels,correctedEmin,correctedEmax);
-  // string inputfile="bkg_001.dat";
   
    ifstream input(inputdatafile);
    int nlines=0; //for counting the number of lines

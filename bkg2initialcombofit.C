@@ -1,10 +1,10 @@
 {
   //Files for storing data file
-  const char * filename="ROOT_FILES/initial.root"; //access the original histogram
-  const char * allhistogramsfile="ROOT_FILES/initial_allhistogram.root";
-  char  file_estimated_parameters[]="DATA/initialestimates.dat"; //file storing the estimated parameters for fit
-  char  outputfile[] ="DATA/initialEnergyerror.dat";
-  char initialcanvaspdf[]="PLOT/initialcanvas.pdf";
+  const char * filename="ROOTFILES/bkg2initial.root"; //access the original histogram
+  const char * allhistogramsfile="ROOTFILES/initial_allhistogram.root"; //Dave the histogram
+  char  file_estimated_parameters[]="DATA/bkg2initialestimates.dat"; //file storing the estimated parameters for fit
+  char  outputfile[] ="DATA/bkg2initialEnergyerror.dat";
+  char initialcanvaspdf[]="PLOT/bkg2initialcanvas.pdf";
   const  int peakNo=23;
   const  int column=6;
   int row=peakNo/column+1;

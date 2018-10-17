@@ -1,8 +1,8 @@
 {
-  const char * filedata="DATA/E_estandE_true.dat"; //File storing the estimated and true energy and their errors
-  const char * rootfile="ROOT_FILES/true_estimated_enregyplot.root"; //root file to save the plot
-  const char * filenamee="DATA/slope_intercept.dat"; //file to store slope and intercept of plot
-  const char * pdfetrue="PLOTS/EtrueECalc.pdf"; //pdf file location
+  const char * filedata="DATA/bkg2E_estandE_true.dat"; //File storing the estimated and true energy and their errors
+  const char * rootfile="ROOTFILES/bkg2true_estimated_enregyplot.root"; //root file to save the plot
+  const char * filenamee="DATA/bkg2slope_intercept.dat"; //file to store slope and intercept of plot
+  const char * pdfetrue="PLOTS/bkg2EtrueECalc.pdf"; //pdf file location
   c=new TCanvas();
   c->SetGrid();
   c->SetFillColor(42);

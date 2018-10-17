@@ -1,8 +1,8 @@
 {
   //Data File contaiing estimated energy and true energy
-  const char * input1="DATA/initialEnergyerror.dat"; //estimated 
-  const  char * input2="DATA/tabulated_energy.dat"; //true
-  const char * output="DATA/E_estandE_true.dat";//storing the data
+  const char * input1="DATA/bkg2initialEnergyerror.dat"; //estimated energy from the fit parameters
+  const  char * input2="DATA/tabulated_energy.dat"; //true energy calculated from nudat2
+  const char * output="DATA/bkg2E_estandE_true.dat";//storing the data manipulated from input1 and input2
   ifstream file1(input1);
   ifstream file2(input2);
   if(file1.is_open())

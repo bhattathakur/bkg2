@@ -1,9 +1,9 @@
 //Energy calibration function....:      0.15448454 keV +     0.38903224 keV/chn
 {
-  //Defining the files
-  const char * root_file="ROOT_FILES/final.root";
-  const char * inputdatafile="DATA/bkg_001.dat";
-  const char * intercept_slopefile="DATA/slope_intercept.dat";
+   //Defining the files
+  const char * root_file="ROOTFILES/bkg2final.root"; //Stores the root file
+  const char * inputdatafile="DATA/bkg_002.dat"; //original data files which stores two columns of data
+  const char * intercept_slopefile="DATA/bkg2slope_intercept.dat";
     
     //Defining the constants
   double b1=0.15448454;
@@ -28,7 +28,6 @@
   else
     {
 	cout<<"Error in reading file "<<intercept_slopefile<<endl;
-	return 0;
     }
   
   double bnew=m2*b1+b2;

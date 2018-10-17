@@ -1,6 +1,6 @@
 {
-  const char * errors_fromresolution="DATA/results_from_resolution.dat";
-  const char * saving_random="PLOT/randompd.pdf";
+  const char * errors_fromresolution="DATA/bkg2results_from_resolution.dat";
+  const char * saving_random="PLOT/bkg2randompd.pdf";
 
   const int ENERGY=1332;
   const int TRIALS=pow(10,6);
@@ -10,7 +10,7 @@
   TCanvas *can=new TCanvas();
 
   //Defining the histogram to will with random numbers
-  TH1F *  ranhis=new TH1F("ranhis","Histogram filled with Random resolution values",TRIALS,0.94,1.14);
+  TH1F *  ranhis=new TH1F("ranhis","Histogram filled with Random resolution values",TRIALS/25,0.94,1.1);
 
   //Checking if the input file is open
   ifstream inputfromran(errors_fromresolution);

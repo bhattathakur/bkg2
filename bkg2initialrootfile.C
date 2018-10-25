@@ -1,49 +1,23 @@
 //Energy calibration function....:      0.15448454 keV +     0.38903224 keV/chn
+//Energy calibration function....:      0.15448454 keV +     0.38903224 keV/chn-bkg 3 energy calibration function
 {
-   //Defining the files
-  const char * root_file="ROOTFILES/bkg2final.root"; //Stores the root file
-  const char * inputdatafile="DATA/bkg_001.dat"; //original data files which stores two columns of data
-  const char * intercept_slopefile="DATA/bkg2slope_intercept.dat";
-    
-    //Defining the constants
   double b1=0.15448454;
   double m1=0.38903224;
   double Emin=0;
   const int numberOfChannels=16384;
   double Emax=numberOfChannels;
-
-  //Reading the intercept and slope form a file
-  double b2,m2;
-  ifstream intercepslope(intercept_slopefile);
-  if(intercepslope.is_open())
-    {
-	while(1)
-	  {
-	    intercepslope>>b2>>m2;
-	    if(!intercepslope.good())break;
-	  }
-	cout<<"Successfully read the intercept and slope from the file "<<intercept_slopefile<<endl;
-	cout<<"intercept = "<<b2 <<" and slope = "<<m2<<endl;
-    }
-  else
-    {
-	cout<<"Error in reading file "<<intercept_slopefile<<endl;
-    }
-  
-  double bnew=m2*b1+b2;
-  double mnew=m1*m2;
-
-  double correctedEmin=Emin*mnew-bnew;
-  double correctedEmax=Emax*mnew-bnew;
+  double correctedEmin=Emin*m1-b1;
+  double correctedEmax=Emax*m1-b1;
   cout<<"correctedEmin = "<<correctedEmin<<endl;
   cout<<"correctedEmax = "<<correctedEmax<<endl;
 
- 
+  //Defining the files
+  const char * root_file="ROOTFILES/bkg2initial.root"; //for storing the histogram in root
+  const char * inputdatafile="DATA/bkg_001.dat";
   
   TCanvas *c = new TCanvas("c","Histogram",500,700);
   TFile *file=new TFile(root_file,"RECREATE"); //Root file to store the histograms
   TH1F *histo=new TH1F("histo","#font[22]{Calibrated Energy Spectrum}",numberOfChannels,correctedEmin,correctedEmax);
-  // string inputfile="bkg_001.dat";
   
    ifstream input(inputdatafile);
    int nlines=0; //for counting the number of lines

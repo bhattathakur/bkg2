@@ -1,5 +1,7 @@
 {
+  gROOT->Reset();
   const char * errors_fromresolution="DATA/bkg2results_from_resolution.dat";
+  const char * bkg2randata="DATA/bkg2randomdata.dat"; //storing the mean and sigma from toy mc
   const char * saving_random="PLOT/bkg2randompd.pdf";
 
   const int ENERGY=1332;
@@ -42,6 +44,27 @@
 	ranhis->Fit("gaus");
 	gStyle->SetOptFit(1111);
 	can->Update();
+		//Getting the paramters of the fit:
+	cout<<ranhis->GetFunction("gaus")->GetParameter(0)<<endl;
+	cout<<ranhis->GetFunction("gaus")->GetParameter(1)<<endl;
+	cout<<ranhis->GetFunction("gaus")->GetParameter(2)<<endl;
+	cout<<ranhis->GetFunction("gaus")->GetParError(0)<<endl;
+	cout<<ranhis->GetFunction("gaus")->GetParError(1)<<endl;
+	cout<<ranhis->GetFunction("gaus")->GetParError(2)<<endl;
+	//storing the parameter of fit in datafile
+	ofstream ranoutput(bkg2randata);
+	if(ranoutput.is_open())
+	  {
+	    ranoutput<<fixed<<setprecision(5);
+	    ranoutput<<ranhis->GetFunction("gaus")->GetParameter(1)<<setw(10)<<ranhis->GetFunction("gaus")->GetParameter(2)<<endl;
+	    cout<<"successfully stored random resolution mc data into file "<<bkg2randata<<endl;
+	
+	  }
+	else
+	  {
+	    cout<<"Unable to open file "<<bkg2randata<<endl;
+	    return 0;
+	  }
 	
 	
     }
